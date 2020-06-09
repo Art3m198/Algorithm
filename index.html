@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="style.css" rel="stylesheet" />
+<head>
+    <title>Data entry</title>
+<style>
+    .main_block{
+    height: 247px;
+    width: 250px; 
+    background: #ccc;
+    padding: 0px;
+    padding-right: 0px; 
+    border: solid 1px black; 
+    float: center;
+  }
+    tr:hover td{
+        color: #6699ff;
+        background: #e8edff;
+    }
+    .block1 { 
+    width: 80%; 
+    /*background: #ccc;*/
+    padding: 5px;
+    margin:0 auto;
+    /*border: solid 1px black; */
+    clear:both; text-align:right; line-height:25px;}
+label {float:left; padding-right:0px;}
+    .main {float:left}
+    .submit {margin:0 25% 0 19%;
+  width:100%;}
+
+*{
+    font-family: Areal;
+}
+.b-container{
+    width:200px;
+    height:150px;
+    background-color: #ccc;
+    margin:0px auto;
+    padding:10px;
+    font-size:30px;
+    color: #fff;
+}
+.b-popup{
+    width:100%;
+    min-height:100%;
+    background-color: rgba(0,0,0,0.5);
+    /*overflow:hidden;*/
+    position:fixed;
+    top:0px;
+}
+.b-popup .b-popup-content{
+    margin:40px auto 0px auto;
+    width:300px;
+    height: auto;
+    padding:10px;
+    background-color: #c5c5c5;
+    border-radius:5px;
+    box-shadow: 0px 0px 10px #000;
+}
+  </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="style.css" rel="stylesheet" />
+   <script src="valid.js" type="text/javascript"></script>
+   <script src ="jquery.js" type ="text/javascript"></script>
+   <script src="chisl.js" type="text/javascript"></script>
+   <script src="calculation.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="b-popup" id="popup1">
+    <div class="b-popup-content">
+
+<form name="myForm" color="blue">
+    <!-- <div class="main_block"> -->
+      <div>
+        <div class="block1">
+
+    	<h2>Entering a new line:&nbsp;&nbsp;</h2>
+            <label>The initial border:</label>
+            <input type="number" oninput="up(this)" step="0.01" min="0" max="999" maxlength="5" class="quantity" name="AREA1" id= "a"/><br>
+            <script>
+function up(e) {
+  if (e.value.indexOf(".") != '-1') {
+    e.value=e.value.substring(0, e.value.indexOf(".") + 3);
+  }
+}
+</script>
+ 
+            <label>The final border:</label>
+            <input type="number" oninput="up(this)" step="0.01" min="0" max="999" maxlength ="5" name="AREA2" class="quantity" id= "aa" /><br>
+        
+        
+            <label>Length:</label>
+            <input type="number" oninput="up(this)" step="0.01" min="0" max="999" name="AREA3" class="quantity" maxlength ="5" id= "c" /><br>
+        
+ 
+
+            <label>Diameter:</label>
+            <input type="number" oninput="up(this)" step="0.01" min="0" max="999" name="AREA4" class="quantity" maxlength ="5" id= "d"/><br>
+              
+
+            <label>D workpiece:</label>
+            <input type="number" oninput="up(this)" step="0.01" min="0" max="999" name="AREA5" class="quantity" maxlength ="5" id= "e" /><br>       
+
+
+
+        </div>
+<br>
+
+         <div class="submit">
+         <input type="button" id="b" value="Add" onclick="validateForm()">
+         <input type="reset" value="Clear" onClick="document.forms['myform'].reset()">          
+         <input type="button" id="cancel" value="Cancel" onclick="PopUpHide()"> 
+    	</div>         
+      </div>
+    </div>  
+</td>
+    </div>  
+</td></tr>
+<tr class="submit">
+ 
+<td />
+<td>
+    <br>
+    <div class="buttons">
+        <br><br>
+    </div>
+ 
+</td>
+</tr>       
+</form>
+</table>
+
+    </div>
+</div>
+</body>
+
+
+ <style>
+  textarea {
+    height: 35px;
+  }
+  fieldset {
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+  }
+  .marked {
+    background-color: yellow;
+    border: 3px red solid;
+  }
+
+  .main_block2{
+    height: 475px;
+    width: 900px; 
+    background: #ccc;
+    padding: 5px;
+    margin:0 auto;
+    padding-right: 5px; 
+    border: solid 1px black; 
+    float: center;    
+    border-radius:5px;
+  }
+
+  .inputType{
+    width: 40px;
+    #float: right;
+   }
+
+   .selector {  
+    float: center; 
+    width: 100%;    
+   }
+
+   .layer {
+    /*overflow: auto; !* Добавляем полосы прокрутки *!*/
+    width: 100%; /* Ширина блока */
+    height: 300px; /* Высота блока */
+    padding: 1px; /* Поля вокруг текста */
+   }
+
+    .topleft { 
+    width: 48%;
+    /*background: #ccc;*/
+    padding: 5px;
+    float: right;    
+    text-align: center;
+   }
+    .topright { 
+    width: 48%; 
+    /*background: #ccc;*/
+    padding: 5px;
+    float: left;    
+    text-align: center;
+   }
+    .midleft { 
+    width: 48%; 
+    /*background: #ccc;*/
+    padding: 5px;
+    float: right;    
+    text-align: left;
+   }
+    .midright { 
+    width: 48%; 
+    /*background: #ccc;*/
+    padding: 5px;
+    float: left;    
+    text-align: right;
+   }
+   .centerdiv {
+    height: 70%; 
+    width: 100%;  
+    float: center; 
+    text-align: left;
+    }
+    .botdiv {
+    height: 8%; 
+    width: 100%;  
+    float: center; 
+    text-align: center;
+    }
+
+   table {
+       width: 100%; /* Ширина таблицы */
+       background: white; /* Цвет фона таблицы */
+       /*color: white; /* Цвет текста */
+       border-spacing: 1px; /* Расстояние между ячейками */
+       display: block;
+   }
+  th {
+      width: 80px;
+      font-weight: normal;
+      text-align: center;
+/*      color: #039;
+      border-bottom: 2px solid #6678b1;
+      padding: 10px 8px;*/
+  }
+  tbody {
+      overflow: auto;
+      display: block;
+      height: 270px;
+  }
+  td {
+      width: 100px;
+      text-align: center;
+
+      padding: 9px 8px;
+      transition: .3s linear;
+
+  }
+   td, th {
+    /*background: maroon; /* Цвет фона ячеек */
+    padding: 3px; /* Поля вокруг текста */
+   }
+  </style>
+  <script src="jquery.js"></script>
+</head>
+
+<body>
+<div class="main_block2" id="mainDiv">
+    <div height: 8%;>
+        <div class="topleft">
+            <b><h2> Result of calculation
+        </div>
+        <div class="topright">
+            <h2> Source data </b>
+        </div>
+    </div>
+
+    <div class="centerdiv" id="centerDiv">
+    <div class="midleft">
+    <div class="layer">
+        
+          <table id="dynamic" width="650" border="1" cellspacing="0" cellpadding="6">
+              <thead>
+              <tr>
+                  <th scope="col" title="Transition number">Num</th>
+                  <th scope="col" title="Operation code">Code</th>
+                  <th scope="col" title="Initial processing border">IB</th>
+                  <th scope="col" title="The final border treatment">FB</th>
+                  <th scope="col" title="Processing length">L</th>
+                  <th scope="col" title="Processing diameter">D</th>
+                  <th scope="col" title="Depth of processing">H</th>
+              </tr>
+              </thead>
+            <tbody id="tableBodyResoult">
+
+            </tbody>
+          </table>
+       
+    </div>
+</div>
+
+<div class="midright">
+    <div class="layer">
+        
+          <table id="dynamic" width="650" border="1" cellspacing="0" cellpadding="5">
+              <thead>
+              <tr>
+                  <th scope="col" title="Lower limit">LL</th>
+                  <th scope="col" title="Upper limit">UL</th>
+                  <th scope="col" title="The length of the step">L</th>
+                  <th scope="col" title="The diameter of the stage">D</th>
+                  <th scope="col" title="The diameter of the workpiece">Dwp</th>
+              </tr>
+              </thead>
+            <tbody id="tableBodyExample" >
+
+            </tbody>
+          </table>
+       
+    </div>
+    </div>
+</div>
+
+    <div>
+        <h3> &#160;Max. deep
+        <input type="number" oninput = "up(this)" id="max_deep" value="2"  step="0.01" min="0" max="999" maxlength="5" class="quantity" >
+        mm
+            </div>
+    <div class="botdiv">
+          <input type="image"  width="35" height="35" src="img/create.png" hspace="20px" title="Create" onclick="PopUpShow()">
+          <!-- <input type="image"  width="35" height="35" src="img/edit.png" hspace="20px" title="Редактировать"> -->
+          <input type="image" width="35" height="35" src="img/erase.png" hspace="20px" id="r" title="Clearing source data" onclick="ClearTableData()" >
+          <input type="image" width="35" height="35" src="img/hand.png" hspace="20px" id="r" title="Calculation" onclick="raschet()" >
+          <a><input type="image" width="35" height="35" src="img/save.png" hspace="20px"  title="Save"></a>
+<!--    		<img width="35" height="35" src="img/dir.png" hspace="5px" alt="open" align="right">
+        <img width="35" height="35" src="img/cancel.png" hspace="5px" alt="open" align="left"> -->
+    </div>
+</div>
+
+</body>
+
+
+
+
+<script src="http://code.jquery.com/jquery-2.0.2.min.js"></script>
+<script>
+    $(document).ready(function(){
+           
+        PopUpHide();
+    });
+    
+    function PopUpShow(){
+        $("#popup1").show();
+    }
+    
+    function PopUpHide(){
+        $("#popup1").hide();
+    }
+    function ClearTableData(){
+      GLOBAL_ARRAY = new Array();
+      GLOBAL_LENGTH = 0;
+      $("#tableBodyExample").empty();
+    }
+    function ClearTableResult(){
+      $("#tableBodyResoult").empty();
+    }
+
+    function CheckTextBox()
+    {
+        if(document.getElementById("max_deep").value.length>0)
+        {
+        document.getElementById("max_deep").value = document.getElementById("max_deep").value.replace(/[^\d]+/g, '');
+        }
+    }
+</script>
+
+
+<script type="text/javascript">
+  document.getElementsByTagName('a')[0].onclick = function() {                  
+                        var textFile = 'Max. deep:'+document.getElementById("max_deep").value+' мм\r\nSource data:\r\n';
+                        for(i = 0; i < GLOBAL_LENGTH; i++){
+                          textFile += GLOBAL_ARRAY[i]+';\r\n';
+                        }
+                        if(mrez[0] != null){
+                          textFile += "Result:\r\n"
+                          for(i = 0; i < mrez.length; i++){
+                            if(mrez[i][6] == 0){
+                              break;
+                            }
+                            textFile += mrez[i]+';\r\n';
+                          }
+                        }
+                        var txtData = 'data:application/txt;charset=utf-8,' + encodeURIComponent(textFile);
+                        this.href = txtData;
+                        this.target = '_blank';
+                        this.download = 'Report.txt';
+                    };
+</script>
+<!-- <input type="file" id="fileinput" /> -->
+<script type="text/javascript">
+  function readSingleFile(evt) {
+    //Retrieve the first (and only!) File from the FileList object
+    var f = evt.target.files[2]; 
+
+    if (f) {
+      var r = new FileReader();
+      r.onload = function(e) { 
+        var contents = e.target.result;
+        alert( "Got the file.n" 
+              +"name: " + f.name + "n"
+              +"type: " + f.type + "n"
+              +"size: " + f.size + " bytesn"
+              + "text: " + contents
+        );  
+      }
+      r.readAsText(f);
+    } else { 
+      alert("Failed to load file");
+    }
+  }
+
+  document.getElementById('fileinput').addEventListener('change', readSingleFile, false);
+</script>
