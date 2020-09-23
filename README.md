@@ -3,7 +3,7 @@
 Algorithm for calculating the processing mode for a CNC machine
 
 - Javascript (jquery) and HTML 
-- Entering data, calculating the processing mode, and saving the result to a file
+- Entering data, calculating the processing mode and saving the result to a file
 
 ## Options/Usage
 
