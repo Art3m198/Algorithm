@@ -7,7 +7,7 @@ Algorithm for calculating the processing mode for a CNC machine
 
 ## Options/Usage
 
-Input data:
+Click "Create" button, input data, click "Add", click "Calculation" button and "Save" button
 ``` 
 The initial border
 The final border
@@ -15,6 +15,7 @@ Length
 Diameter
 D workpiece
 ```
+
 ### Screenshots
 <img src="https://github.com/Art3m198/Algorithm/blob/master/screen/input.PNG" width="50%" height="50%">
 
